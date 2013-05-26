@@ -1,3 +1,3 @@
 class Drawing < ActiveRecord::Base
-  attr_accessible :type, :user_id, :image
+  attr_accessible :image
 end
