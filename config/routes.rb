@@ -1,4 +1,8 @@
 ExquisiteCorpse::Application.routes.draw do
+  resources :drawings
+  root to: "drawings#new"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
