@@ -44,7 +44,7 @@ class DrawingsController < ApplicationController
 
     respond_to do |format|
       if @drawing.save
-        format.html { redirect_to @drawing, notice: 'Drawing was successfully created.' }
+        format.html { redirect_to @drawing, notice: 'Drawing was successfully created!!' }
         format.json { render json: @drawing, status: :created, location: @drawing }
       else
         format.html { render action: "new" }

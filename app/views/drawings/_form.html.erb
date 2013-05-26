@@ -1,5 +1,7 @@
 <canvas id="drawing" width="500" height="200"></canvas>
 <%= form_for(@drawing) do |f| %>
+  <%= f.hidden_field :image %>
+
   <% if @drawing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
@@ -11,16 +13,8 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<button id="clear">Clear</button>
