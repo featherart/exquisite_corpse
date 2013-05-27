@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527051408) do
+ActiveRecord::Schema.define(:version => 20130527054900) do
+
+  create_table "corpses", :force => true do |t|
+    t.string   "name"
+    t.integer  "head_id"
+    t.integer  "torso_id"
+    t.integer  "legs_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "drawings", :force => true do |t|
     t.integer  "type",       :limit => 255

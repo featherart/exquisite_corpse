@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  head_id: 1
+  torso_id: 1
+  legs_id: 1
+
+two:
+  name: MyString
+  head_id: 1
+  torso_id: 1
+  legs_id: 1
