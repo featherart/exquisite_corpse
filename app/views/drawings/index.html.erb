@@ -11,7 +11,7 @@
 
 <% @drawings.each do |drawing| %>
   <tr>
-    <td><%= drawing.type %></td>
+    <td><%= drawing.type_id %></td>
     <td><%= drawing.user_id %></td>
     <td><%= link_to 'Show', drawing %></td>
     <td><%= link_to 'Edit', edit_drawing_path(drawing) %></td>

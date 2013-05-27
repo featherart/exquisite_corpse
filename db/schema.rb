@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527054900) do
+ActiveRecord::Schema.define(:version => 20130527055602) do
 
   create_table "corpses", :force => true do |t|
     t.string   "name"
@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(:version => 20130527054900) do
   end
 
   create_table "drawings", :force => true do |t|
-    t.integer  "type",       :limit => 255
     t.integer  "user_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.text     "image"
+    t.integer  "type_id"
   end
 
 end
