@@ -1,5 +1,7 @@
 ExquisiteCorpse::Application.routes.draw do
-  resources :drawings
+  resources :drawings do
+    resources :drawing_types
+  end
   root to: "drawings#new"
 
 

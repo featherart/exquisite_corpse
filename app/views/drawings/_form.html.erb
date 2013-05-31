@@ -1,20 +1,25 @@
-<canvas id="drawing" width="500" height="200"></canvas>
-<%= form_for(@drawing) do |f| %>
+
+  <canvas id="drawing" width="500" height="200"></canvas>
+  <%= form_for(@drawing) do |f| %>
   <%= f.hidden_field :image %>
+  <div class="field">
+    <%= f.label :type_id %>
+    <%= f.collection_select(:type_id, DrawingType.all, :id, :type_description) %>
+  </div>
 
   <% if @drawing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
+<div id="error_explanation">
+  <h2><%= pluralize(@drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
 
-      <ul>
-      <% @drawing.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <ul>
+  <% @drawing.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </ul>
+</div>
+  <% end %>
+<div class="actions">
+  <%= f.submit %>
+  <button id="clear">Clear</button>
+</div>
 <% end %>
-<button id="clear">Clear</button>

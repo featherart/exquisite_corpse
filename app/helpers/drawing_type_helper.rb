@@ -1,0 +1,2 @@
+module DrawingTypeHelper
+end

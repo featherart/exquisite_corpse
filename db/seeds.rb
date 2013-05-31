@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+drawing_types = DrawingType.create([{ type_description:'head'}, { type_description:'torso'}, { type_description:'legs' } ])
