@@ -2,10 +2,19 @@
 
 <p>
 	<b>Your Drawing:</b>
-	<img src="<%= @drawing.image %>" />
-	<b>Drawing Type:</b>
-	<%= @drawing.type_id %>
 </p>
-
+<p>
+	<img src="<%= @drawing.image %>" />
+</p>
+<p>
+	<b>Drawing Type:</b>
+	<% if @drawing.type_id == 1 %>
+        <td><b>Head</b></td>
+    <% elsif @drawing.type_id == 2 %>
+        <td><b>Torso</b></td>
+    <% else %>
+        <td><b>Legs</b></td>
+    <% end %>
+</p>
 <%= link_to 'Edit', edit_drawing_path(@drawing) %> |
 <%= link_to 'Back', drawings_path %>

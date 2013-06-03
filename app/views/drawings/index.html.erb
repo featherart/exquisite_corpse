@@ -1,9 +1,9 @@
-<h1>Listing drawings</h1>
+<h1>All the Drawrings</h1>
 
 <table>
   <tr>
+    <th>Thumb</th>
     <th>Type</th>
-    <th>User</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,7 +11,15 @@
 
 <% @drawings.each do |drawing| %>
   <tr>
-    <td><%= drawing.type_id %></td>
+    <td><img src="<%= drawing.image %>" width="150px" height="auto"></img></td>
+    <% if drawing.type_id == 1 %>
+        <td><b>Head</b></td>
+    <% elsif drawing.type_id == 2 %>
+        <td><b>Torso</b></td>
+    <% else %>
+        <td><b>Legs</b></td>
+    <% end %>
+    <!--<td><%= drawing.type_id %></td>-->
     <td><%= drawing.user_id %></td>
     <td><%= link_to 'Show', drawing %></td>
     <td><%= link_to 'Edit', edit_drawing_path(drawing) %></td>
