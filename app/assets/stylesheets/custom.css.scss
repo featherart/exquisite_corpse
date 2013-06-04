@@ -1,0 +1,68 @@
+@import "bootstrap";
+
+body {
+   /* 60px to make the container go all the way 
+      to the bottom of the topbar */
+   padding-top: 60px; 
+}
+
+h2 {
+  font-size: 2.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: normal;
+  color: #333;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* header */
+
+#logo {
+  float: left;
+  font-size: 1.5em;
+  margin-right: 60px;
+  color: #f00;
+  padding-top: 10px;
+  font-weight: bold;
+  line-height: 2;
+  letter-spacing: -2px;
+  &:hover {
+  color: #fff;
+  text-decoration: none;
+  }
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+

@@ -1,0 +1,31 @@
+<div class="hero-unit">
+  <h1>New Drawing Pair</h1>
+  <p>
+  <% drawings = Drawing.all
+     randoms = []
+     drawing_id = 0
+     one_head = ""
+
+     drawings.each do |drawing| %>
+
+       <% if drawing.type_id == 1 
+            randoms << drawing.id %>
+       	      
+       <% end %>
+     <% drawing_id = Random.new.rand(1..randoms.length) %>
+
+    <% if drawing.id == drawing_id 
+    	one_head = drawing.image %>
+    
+    <% end %>
+    
+   <% end %>
+   <img src="<%= one_head  %>"></src>
+    
+    
+  </p>
+  <p> 
+    <%= render 'drawings/form' %>
+  </p>    
+</div>
+<%= link_to 'Back', pairs_path %>
