@@ -11,11 +11,11 @@
             heads[drawing.id] = drawing.image
           end 
       end %>
-      <%  heads.each do |key, value| 
-            random_head_id = Random.rand(key) 
-            
-            if (heads[random_head_id] == nil )           
-              random_head_id = Random.rand(key)
+      <%    until heads[random_head_id] != nil
+
+              heads.each do |key, value| 
+              random_head_id = Random.rand(key) 
+         
             end
         end %>
 
