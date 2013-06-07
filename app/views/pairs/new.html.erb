@@ -2,25 +2,24 @@
   <h1>New Drawing Pair</h1>
   <p>
   <% drawings = Drawing.all
-     randoms = []
-     drawing_id = 0
-     one_head = ""
+     heads = Hash.new
+     random_head_id = 0
 
      drawings.each do |drawing| %>
 
        <% if drawing.type_id == 1 
-            randoms << drawing.id %>
-       	      
-       <% end %>
-     <% drawing_id = Random.new.rand(1..randoms.length) %>
+            heads[drawing.id] = drawing.image
+          end 
+      end %>
+      <%  heads.each do |key, value| 
+            random_head_id = Random.rand(key) 
+            
+            if (heads[random_head_id] == nil )           
+              random_head_id = Random.rand(key)
+            end
+        end %>
 
-    <% if drawing.id == drawing_id 
-    	one_head = drawing.image %>
-    
-    <% end %>
-    
-   <% end %>
-   <img src="<%= one_head  %>"></src>
+   <img src="<%= heads[random_head_id]  %>"></src>
     
     
   </p>

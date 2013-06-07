@@ -1,11 +1,5 @@
 @import "bootstrap";
 
-body {
-   /* 60px to make the container go all the way 
-      to the bottom of the topbar */
-   padding-top: 60px; 
-}
-
 h2 {
   font-size: 2.7em;
   letter-spacing: -1px;
@@ -20,9 +14,9 @@ html {
 }
 
 body {
-  padding-top: 30px;
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-top: 90px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 section {
