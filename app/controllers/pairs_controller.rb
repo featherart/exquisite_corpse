@@ -27,6 +27,10 @@ class PairsController < ApplicationController
     @pair = Pair.new
     @drawing = Drawing.new
 
+    #@randomly_selected_drawing = Drawing.all.sample
+    @randomly_selected_drawing = Drawing.where(type_id: 1).sample
+    #Drawing.where(type_id: 1).sample
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @pair }
@@ -41,7 +45,21 @@ class PairsController < ApplicationController
   # POST /pairs
   # POST /pairs.json
   def create
-    @pair = Pair.new(params[:pair])
+    @pair = Pair.new(params[:id])
+    @pair.image_top = params[:pairs_top_id]
+    #@pair.image_bottom = xxx
+    puts "****************"
+    puts params
+    puts "****************"
+    @drawing = Drawing.new()
+    @drawing.image = params[:image]
+    @drawing.save!
+
+    @pair.image_bottom = @drawing.id
+
+    puts '+++++++++++++++++'
+    p @drawing
+    #@pair = @drawing.pair.build(params[:pair])
 
     respond_to do |format|
       if @pair.save

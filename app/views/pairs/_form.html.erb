@@ -1,25 +1,40 @@
-<%= form_for(@pair) do |f| %>
-  <% if @pair.errors.any? %>
+  <canvas id="drawing" width="500" height="200"></canvas>
+  <%= form_for(@pair) do |f| %>
+    <%= hidden_field_tag :image %>
+    <div class="field">
+      <%= collection_select(@drawing, :type_id, DrawingType.all, :id, :type_description) %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :image_top %>
+      <%= f.hidden_field :image_bottom %>
+      <%= hidden_field_tag :pairs_top_id, @randomly_selected_drawing.id %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+      <button id="clear">Clear</button>
+    </div>
+    
+
+    <% if @drawing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@pair.errors.count, "error") %> prohibited this pair from being saved:</h2>
+      <h2><%= pluralize(@drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
 
       <ul>
-      <% @pair.errors.full_messages.each do |msg| %>
+      <% @drawing.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
-  <% end %>
+  
+    <% end %>
 
-  <div class="field">
-    <%= f.label :image_top %><br />
-    <%= f.number_field :image_top %>
-  </div>
-  <div class="field">
-    <%= f.label :image_bottom %><br />
-    <%= f.number_field :image_bottom %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <script>
+      $($('#new_pair')[0]).submit(function() {
+        var canvasValue = $('canvas')[0].toDataURL('image/png');
+        console.log(canvasValue);
+        $('#image').val(canvasValue);
+      })
+    </script>
+    
 <% end %>
+

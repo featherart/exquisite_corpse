@@ -1,30 +1,29 @@
 <div class="hero-unit">
   <h1>New Drawing Pair</h1>
   <p>
-  <% drawings = Drawing.all
+  <!-- display a random head -->
+  <%# drawings = Drawing.all
      heads = Hash.new
      random_head_id = 0
 
-     drawings.each do |drawing| %>
+     drawings.each do |drawing|
+       if drawing.type_id == 1 
+         heads[drawing.id] = drawing.image
+       end 
+     end 
+ 
+     until heads[random_head_id] != nil
+       heads.each do |key, value| 
+         random_head_id = Random.rand(key)         
+       end
+     end %>
 
-       <% if drawing.type_id == 1 
-            heads[drawing.id] = drawing.image
-          end 
-      end %>
-      <%    until heads[random_head_id] != nil
-
-              heads.each do |key, value| 
-              random_head_id = Random.rand(key) 
-         
-            end
-        end %>
-
-   <img src="<%= heads[random_head_id]  %>"></src>
-    
-    
+  <!--<img src="<%#= heads[random_head_id]  %>"></src>-->
+  <img src="<%= @randomly_selected_drawing.image %>"></src>
+	    
   </p>
   <p> 
-    <%= render 'drawings/form' %>
+  <%= render 'form' %>
   </p>    
 </div>
 <%= link_to 'Back', pairs_path %>
