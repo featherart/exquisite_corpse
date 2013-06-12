@@ -14,6 +14,17 @@ class PairsController < ApplicationController
   # GET /pairs/1.json
   def show
     @pair = Pair.find(params[:id])
+    @drawing = Drawing.find(params[:id])
+
+    @drawing_top = Drawing.find(@pair.image_top)
+    @drawing_bottom = Drawing.find(@pair.image_bottom)
+    @drawing_top = @pair.drawing_top
+    
+    #@drawing_bottom = Drawing.select(%q{image}).where(:id => @pair.image_bottom)
+    puts "$$$$$$$$$$$"
+    puts @drawing_top
+    puts @drawing_bottom
+    puts "$$$$$$$$$$$$"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,8 +39,7 @@ class PairsController < ApplicationController
     @drawing = Drawing.new
 
     #@randomly_selected_drawing = Drawing.all.sample
-    @randomly_selected_drawing = Drawing.where(type_id: 1).sample
-    #Drawing.where(type_id: 1).sample
+    @randomly_selected_head = Drawing.where(type_id: 1).sample
 
     respond_to do |format|
       format.html # new.html.erb

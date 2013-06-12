@@ -1,29 +1,17 @@
 <p id="notice"><%= notice %></p>
-<%   drawings = Drawing.all
-     top_id = Drawing.where(id: @pair.image_top)
-     bottom_id = Drawing.where(id: @pair.image_bottom)
-     pair = Hash.new
-%>
-Top id: <%= top_id %>
-Bottom id: <%= bottom_id %>
-<%
-     drawings.each do |drawing|
-       if drawing.id == top_id
-         pair[top_id] = drawing.image
+<%  
+     #top = Drawing.where(:id => 1)
+     #@top= Drawing.select(%q{image}).where(:id => 1)
 
-       elsif drawing.id == bottom_id
-         pair[bottom_id] = drawing.image
-       end 
-     end 
- 
-     %>
+     ##@bottom = Drawing.select(%q{image}).where(:id => 37)
+%>
 
 
 <p>
-  <img src=" <%= Drawing.where(id: @pair.image_top) %> "></src> 
+  <img src=" <%= @drawing_top.image %> "></src> 
 </p>
 <p>
-  <img src=" <%= Drawing.where(id: @pair.image_bottom) %> "></src>
+  <img src=" <%= @drawing_bottom.image %> "></src>
 </p>
 <p>
   <b>Image top:</b>
@@ -33,5 +21,6 @@ Bottom id: <%= bottom_id %>
   <b>Image bottom:</b>
   <b> Here's bottom: <%= @pair.image_bottom %> </b>
 </p>
+
 
 <%= link_to 'Back', pairs_path %>

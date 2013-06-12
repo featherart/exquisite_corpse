@@ -7,7 +7,9 @@
     <div class="field">
       <%= f.hidden_field :image_top %>
       <%= f.hidden_field :image_bottom %>
-      <%= hidden_field_tag :pairs_top_id, @randomly_selected_drawing.id %>
+      <%= hidden_field_tag :pairs_top_id, @randomly_selected_head.id %>
+      <%= hidden_field_tag :image_top, @drawing_top %>
+      <%= hidden_field_tag :image_bottom, @drawing_bottom %>
     </div>
     <div class="actions">
       <%= f.submit %>
@@ -31,6 +33,7 @@
     <script>
       $($('#new_pair')[0]).submit(function() {
         var canvasValue = $('canvas')[0].toDataURL('image/png');
+        console.log("############");
         console.log(canvasValue);
         $('#image').val(canvasValue);
       })
