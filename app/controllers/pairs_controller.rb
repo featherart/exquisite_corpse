@@ -3,6 +3,13 @@ class PairsController < ApplicationController
   # GET /pairs.json
   def index
     @pairs = Pair.all
+    @drawings = Drawing.all
+
+    #@drawings_top = Drawing.find(@pair.image_top)
+    #@drawings_bottom = Drawing.find(@pair.image_bottom)
+
+    #@drawings_top = Drawing.where(id: @pair.image_top)
+    #@drawings_bottom = Drawing.where(id: @pair.image_bottom)
 
     respond_to do |format|
       format.html # index.html.erb

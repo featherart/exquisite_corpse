@@ -1,10 +1,10 @@
 <h1>Listing pairs</h1>
 
 <table>
+
   <tr>
     <th>Image top</th>
     <th>Image bottom</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -14,7 +14,6 @@
     <td><%= pair.image_top %></td>
     <td><%= pair.image_bottom %></td>
     <td><%= link_to 'Show', pair %></td>
-    <td><%= link_to 'Edit', edit_pair_path(pair) %></td>
     <td><%= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

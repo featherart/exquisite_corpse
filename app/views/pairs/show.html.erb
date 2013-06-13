@@ -1,12 +1,9 @@
 <p id="notice"><%= notice %></p>
-<%  
-     @drawings.each do |d|
-    
-%>
 <p>
-  <img src=" <%= d.image %> "></src> 
+  <img src=" <%= @drawing_top.image %>"></src>
+<p>
+  <img src=" <%= @drawing_bottom.image %> "></src> 
 </p>
-<% end %>
 <p>
   <b>Image top:</b>
   <b> Here's top: <%= @pair.image_top %> </b>
