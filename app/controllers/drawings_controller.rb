@@ -3,6 +3,9 @@ class DrawingsController < ApplicationController
   # GET /drawings.json
   def index
     @drawings = Drawing.all
+    #@drawing_type = DrawingType.where(id: @drawings.type_id)
+
+    #@drawing_type = @drawings.type_id
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +17,7 @@ class DrawingsController < ApplicationController
   # GET /drawings/1.json
   def show
     @drawing = Drawing.find(params[:id])
+    @drawing_type = DrawingType.find(@drawing.type_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,6 +29,7 @@ class DrawingsController < ApplicationController
   # GET /drawings/new.json
   def new
     @drawing = Drawing.new
+    #@drawing_type = DrawingType.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +46,7 @@ class DrawingsController < ApplicationController
   # POST /drawings.json
   def create
     @drawing = Drawing.new(params[:drawing])
+    #@drawing_type = DrawingType.new(params[:type_id])
 
     respond_to do |format|
       if @drawing.save

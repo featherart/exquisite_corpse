@@ -1,5 +1,8 @@
 $(function() {
   var $canvas = $("#drawing");
+  if($canvas.length == 0) {
+    return;
+  }
   var $clear = $("#clear");
   var $form = $("#new_drawing");
   var $hidden = $("#drawing_image");

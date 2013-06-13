@@ -8,13 +8,17 @@
 </p>
 <p>
 	<b>Drawing Type:</b>
-	<% if @drawing.type_id == 1 %>
-        <td><b>Head</b></td>
-    <% elsif @drawing.type_id == 2 %>
-        <td><b>Torso</b></td>
-    <% else %>
-        <td><b>Legs</b></td>
-    <% end %>
+    <td><b><%= @drawing_type.type_description %></b></td>
+    
+	<% #if @drawing.type_id == 1 %>
+        <!--<td><b>Head</b></td>-->
+    <% #elsif @drawing.type_id == 2 %>
+        <!--<td><b>Torso</b></td>-->
+    <% #elsif @drawing.type_id == 3 %>
+        <!--<td><b>Legs</b></td>-->
+    <% #else %>
+        <!--<td><b>Unknown</b></td>-->
+    <% #end %>
 </p>
 </div>
 <%= link_to 'Back', drawings_path %>

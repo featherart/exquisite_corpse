@@ -69,6 +69,7 @@ class PairsController < ApplicationController
     puts "****************"
     @drawing = Drawing.new()
     @drawing.image = params[:image]
+    @drawing.type_id = params[:type_id]
     @drawing.save!
 
     @pair.image_bottom = @drawing.id
