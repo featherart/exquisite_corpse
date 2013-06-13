@@ -16,16 +16,15 @@ class PairsController < ApplicationController
     @pair = Pair.find(params[:id])
     @drawing = Drawing.find(params[:id])
 
+    #@drawings = @pair.drawings
+
+
     @drawing_top = Drawing.find(@pair.image_top)
     @drawing_bottom = Drawing.find(@pair.image_bottom)
-    @drawing_top = @pair.drawing_top
-    
-    #@drawing_bottom = Drawing.select(%q{image}).where(:id => @pair.image_bottom)
-    puts "$$$$$$$$$$$"
-    puts @drawing_top
-    puts @drawing_bottom
-    puts "$$$$$$$$$$$$"
+    #@drawing_top = @pair.drawing_top
 
+    #@drawing_bottom = Drawing.select(%q{image}).where(:id => @pair.image_bottom)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @pair }

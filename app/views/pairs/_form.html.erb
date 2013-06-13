@@ -5,11 +5,9 @@
       <%= collection_select(@drawing, :type_id, DrawingType.all, :id, :type_description) %>
     </div>
     <div class="field">
-      <%= f.hidden_field :image_top %>
-      <%= f.hidden_field :image_bottom %>
+      <%#= #f.hidden_field :image_top %>
+      <%#= f.hidden_field :image_bottom %>
       <%= hidden_field_tag :pairs_top_id, @randomly_selected_head.id %>
-      <%= hidden_field_tag :image_top, @drawing_top %>
-      <%= hidden_field_tag :image_bottom, @drawing_bottom %>
     </div>
     <div class="actions">
       <%= f.submit %>

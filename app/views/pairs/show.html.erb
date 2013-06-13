@@ -1,18 +1,12 @@
 <p id="notice"><%= notice %></p>
 <%  
-     #top = Drawing.where(:id => 1)
-     #@top= Drawing.select(%q{image}).where(:id => 1)
-
-     ##@bottom = Drawing.select(%q{image}).where(:id => 37)
+     @drawings.each do |d|
+    
 %>
-
-
 <p>
-  <img src=" <%= @drawing_top.image %> "></src> 
+  <img src=" <%= d.image %> "></src> 
 </p>
-<p>
-  <img src=" <%= @drawing_bottom.image %> "></src>
-</p>
+<% end %>
 <p>
   <b>Image top:</b>
   <b> Here's top: <%= @pair.image_top %> </b>
