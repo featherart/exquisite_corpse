@@ -1,9 +1,10 @@
   <canvas id="drawing" width="500" height="200"></canvas>
   <%= form_for(@pair) do |f| %>
     <%= hidden_field_tag :pairs_top_id, @randomly_selected_head.id %>
+    <%= hidden_field_tag :type_id, 2 %>
     <%= hidden_field_tag :image %>
     <div class="field">
-      <%= collection_select(@drawing, :type_id, DrawingType.all, :id, :type_description) %>
+      <%#= collection_select(@drawing, :type_id, DrawingType.all, :id, :type_description) %>
     </div>
     <div class="actions">
       <%= f.submit %>

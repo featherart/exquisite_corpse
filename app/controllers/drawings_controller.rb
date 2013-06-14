@@ -3,6 +3,11 @@ class DrawingsController < ApplicationController
   # GET /drawings.json
   def index
     @drawings = Drawing.all
+    @drawing_types = DrawingType.all
+    puts "@@@@@@@@@@@@@ drawings in index: @@@@@@@@@"
+    #puts @drawings
+    puts @drawing_types
+    puts "@@@@@@@@@@@@@@@@@"
     #@drawing_type = DrawingType.where(id: @drawings.type_id)
 
     #@drawing_type = @drawings.type_id
@@ -47,6 +52,7 @@ class DrawingsController < ApplicationController
   def create
     @drawing = Drawing.new(params[:drawing])
     #@drawing_type = DrawingType.new(params[:type_id])
+    @pair.image_top = params[:pairs_top_id]
 
     respond_to do |format|
       if @drawing.save

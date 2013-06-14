@@ -21,7 +21,10 @@ class PairsController < ApplicationController
   # GET /pairs/1.json
   def show
     @pair = Pair.find(params[:id])
-    @drawing = Drawing.find(params[:id])
+    puts "$$$$$$$$$$$$$$$$$$$"
+    puts params
+    puts "$$$$$$$$$$$$$$$$$$$"
+    #@drawing = Drawing.find(params[:id])
 
     #@drawings = @pair.drawings
 
@@ -64,18 +67,19 @@ class PairsController < ApplicationController
     @pair = Pair.new(params[:id])
     @pair.image_top = params[:pairs_top_id]
     #@pair.image_bottom = xxx
-    puts "****************"
-    puts params
-    puts "****************"
+    
     @drawing = Drawing.new()
     @drawing.image = params[:image]
     @drawing.type_id = params[:type_id]
+    puts "*********drawing type_id in create!!!*******"
+    puts @drawing.type_id
+    puts "****************"
     @drawing.save!
 
     @pair.image_bottom = @drawing.id
 
-    puts '+++++++++++++++++'
-    p @drawing
+    #puts '+++++++++++++++++'
+    #p @drawing
     #@pair = @drawing.pair.build(params[:pair])
 
     respond_to do |format|
