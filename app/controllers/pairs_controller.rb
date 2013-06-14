@@ -113,7 +113,9 @@ class PairsController < ApplicationController
   # DELETE /pairs/1.json
   def destroy
     @pair = Pair.find(params[:id])
+    #@drawing = Drawing.find(params[:id])
     @pair.destroy
+    #@drawing.destroy
 
     respond_to do |format|
       format.html { redirect_to pairs_url }

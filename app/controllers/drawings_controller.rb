@@ -3,14 +3,6 @@ class DrawingsController < ApplicationController
   # GET /drawings.json
   def index
     @drawings = Drawing.all
-    @drawing_types = DrawingType.all
-    puts "@@@@@@@@@@@@@ drawings in index: @@@@@@@@@"
-    #puts @drawings
-    puts @drawing_types
-    puts "@@@@@@@@@@@@@@@@@"
-    #@drawing_type = DrawingType.where(id: @drawings.type_id)
-
-    #@drawing_type = @drawings.type_id
 
     respond_to do |format|
       format.html # index.html.erb
