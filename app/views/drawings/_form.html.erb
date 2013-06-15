@@ -3,8 +3,8 @@
   <%= form_for(@drawing) do |f| %>
   <%= f.hidden_field :image %>
   <div class="field">
-    <%= f.label :type_id %>
-    <%= f.collection_select(:type_id, DrawingType.all, :id, :type_description) %>
+    <%= f.label :drawing_type_id %>
+    <%= f.collection_select(:drawing_type_id, DrawingType.all, :id, :type_description) %>
   </div>
 
   <% if @drawing.errors.any? %>

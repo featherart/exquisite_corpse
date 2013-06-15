@@ -2,11 +2,29 @@ class DrawingsController < ApplicationController
   # GET /drawings
   # GET /drawings.json
   def index
-    @drawings = Drawing.all
+    #@drawings = Drawing.joins(:drawing_type)  # this does 1+M+N SQL queries!!?!?!!?
+    #@drawings = Drawing.includes(:drawing_type)  # this does 2 SQL queries, still 1 too many
+    #@drawings = Drawing.joins(:drawing_type).select([:user_id, :image, :type_description]).all  # this does a single join, :id needs disambiguating somehow?
+    #@drawings = Drawing.joins(:drawing_type).select(["drawings.*", :type_description]).all  # this does a single join, uses SQL string to get drawings.id
+    #@drawings = Drawing.includes(:drawing_type).where("drawing_type_id IS NOT NULL") # this where does not force a single join like the guy on the internet said it would!
+    #@drawings = Drawing.includes(:drawing_type).where("drawing_types.id IS NOT NULL") # this where does force the single join, you must need to reference the joined table
+
+    @drawings = Drawing.includes(:drawing_type)  # this does 2 SQL queries, still 1 too many, but apparently this is the rails way
+
+    # this emits the correct query but only uses it for the drawings array, and still does N other queries!?!?
+    #@drawings = Drawing.select("drawings.*, drawing_types.type_description").joins("INNER JOIN drawing_types ON drawing_types.id = drawings.drawing_type_id")
+
+    # no idea what these are...
+    #@drawing_type = Drawing.where(:joins => 'join drawing_types on drawings.type_id = drawing_types.id')
+    #@drawing_types = DrawingType.joins(:drawings)
+
+    #puts "$$$$$$$$$$$$$$"
+    #puts @drawings.inspect
+    #puts "*************"
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @drawings }
+      #format.json { render json: @drawings }
     end
   end
 
@@ -14,7 +32,7 @@ class DrawingsController < ApplicationController
   # GET /drawings/1.json
   def show
     @drawing = Drawing.find(params[:id])
-    @drawing_type = DrawingType.find(@drawing.type_id)
+    @drawing_type = DrawingType.find(@drawing.drawing_type_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -43,8 +61,13 @@ class DrawingsController < ApplicationController
   # POST /drawings.json
   def create
     @drawing = Drawing.new(params[:drawing])
-    #@drawing_type = DrawingType.new(params[:type_id])
-    @pair.image_top = params[:pairs_top_id]
+    #@drawing_type = DrawingType.new(params[:drawing_type_id])
+    puts "&&&&&&&&&&&&&&& in create &&&&&&&&&&&"
+    puts @pair.to_s
+    puts "*************************************"
+    if @pair != nil # it is a pair, not just a single drawing
+      @pair.image_top = params[:pairs_top_id]
+    end
 
     respond_to do |format|
       if @drawing.save

@@ -5,6 +5,9 @@ class PairsController < ApplicationController
     @pairs = Pair.all
     @drawings = Drawing.all
 
+    puts "+++++++++++ pairs index +++++++++++++"
+    #@drawings = Drawing.includes(:drawing_type)
+
     #@drawings_top = Drawing.find(@pair.image_top)
     #@drawings_bottom = Drawing.find(@pair.image_bottom)
 
@@ -21,9 +24,9 @@ class PairsController < ApplicationController
   # GET /pairs/1.json
   def show
     @pair = Pair.find(params[:id])
-    puts "$$$$$$$$$$$$$$$$$$$"
-    puts params
-    puts "$$$$$$$$$$$$$$$$$$$"
+    #puts "$$$$$$$$$$$$$$$$$$$"
+    #puts params
+    #puts "$$$$$$$$$$$$$$$$$$$"
     #@drawing = Drawing.find(params[:id])
 
     #@drawings = @pair.drawings
@@ -47,8 +50,8 @@ class PairsController < ApplicationController
     @pair = Pair.new
     @drawing = Drawing.new
 
-    #@randomly_selected_drawing = Drawing.all.sample
-    @randomly_selected_head = Drawing.where(type_id: 1).sample
+    #@randomly_selected_drawing = Drawing.all.sample # gets a random drawing of any type
+    @randomly_selected_head = Drawing.where(drawing_type_id: 1).sample
 
     respond_to do |format|
       format.html # new.html.erb
@@ -70,10 +73,10 @@ class PairsController < ApplicationController
     
     @drawing = Drawing.new()
     @drawing.image = params[:image]
-    @drawing.type_id = params[:type_id]
-    puts "*********drawing type_id in create!!!*******"
-    puts @drawing.type_id
-    puts "****************"
+    @drawing.drawing_type_id = params[:drawing_type_id]
+    #puts "*********drawing type_id in create!!!*******"
+    #puts @drawing.drawing_type_id
+    #puts "****************"
     @drawing.save!
 
     @pair.image_bottom = @drawing.id
