@@ -10,7 +10,7 @@ class DrawingsController < ApplicationController
     #@drawings = Drawing.includes(:drawing_type).where("drawing_types.id IS NOT NULL") # this where does force the single join, you must need to reference the joined table
 
     @drawings = Drawing.includes(:drawing_type)  # this does 2 SQL queries, still 1 too many, but apparently this is the rails way
-
+    
     # this emits the correct query but only uses it for the drawings array, and still does N other queries!?!?
     #@drawings = Drawing.select("drawings.*, drawing_types.type_description").joins("INNER JOIN drawing_types ON drawing_types.id = drawings.drawing_type_id")
 
@@ -18,9 +18,9 @@ class DrawingsController < ApplicationController
     #@drawing_type = Drawing.where(:joins => 'join drawing_types on drawings.type_id = drawing_types.id')
     #@drawing_types = DrawingType.joins(:drawings)
 
-    #puts "$$$$$$$$$$$$$$"
-    #puts @drawings.inspect
-    #puts "*************"
+    puts "$$$$$$$ in drawings index $$$$$$$"
+    puts @drawings.inspect
+    puts "*************"
 
     respond_to do |format|
       format.html # index.html.erb
