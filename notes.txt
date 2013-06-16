@@ -1,0 +1,53 @@
+  <tr>
+    <th>Image top</th>
+    <th>Image bottom</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @drawings_top.each do |dt| %>
+<% @drawings_bottom.each do |db| %>
+  <tr>
+    <td><img src="<%= dt.image %>"></src></td>
+    <td><img src="<%= db.image %>"></src></td>
+    <td><%= link_to 'Show', pair %></td>
+    <td><%= link_to 'Edit', edit_pair_path(pair) %></td>
+    <td><%= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<% end %>
+
+
+
+nt.all(:joins => 'LEFT OUTER JOIN addresses ON addresses.client_id = clients.id')
+    select drawings.id, drawings.type_id, drawing_types.type_description from drawings join drawing_types on drawings.type_id = drawing_types.id;
+    SELECT clients.* FROM clients LEFT OUTER JOIN addresses ON addresses.client_id = clients.id
+
+
+    select drawings.id, drawings.type_id, drawing_types.type_description from drawings join drawing_types on drawings.type_id = drawing_types.id;
+
+
+    sqlite> select top.id, top.drawing_type_id, bot.id, bot.drawing_type_id from pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom;
+1|1|53|2
+6|1|54|2
+51|1|55|2
+56|1|57|2
+sqlite> select top.id, top.drawing_type_id, bot.id, bot.drawing_type_id from pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id;
+1|1|53|2
+6|1|54|2
+51|1|55|2
+56|1|57|2
+sqlite> select top.id, toptypes.type_description, bot.id, bottypes.type_description from pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id;
+1|Head|53|Torso
+6|Head|54|Torso
+51|Head|55|Torso
+56|Head|57|Torso
+
+
+select top.id as top_id, toptypes.type_description as top_description, bot.id as top_id, bottypes.type_description as bot_description from pairs 
+inner join drawings as top on top.id = pairs.image_top 
+inner join drawings as bot on bot.id = pairs.image_bottom 
+inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id 
+inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id;
+
+

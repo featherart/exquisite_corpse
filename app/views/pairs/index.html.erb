@@ -2,19 +2,22 @@
 
 <table>
 
-  <tr>
-    <th>Image top</th>
-    <th>Image bottom</th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @pairs.each do |pair| %>
+ <tr>
+    <td><img src=" <%= pair.attributes['top_image'] %> " width="120px" height="auto"></src><br>
+        <img src=" <%= pair.attributes['bot_image'] %> " width="120px" height="auto"></src>
+    </td>
+    <td><p><b><%= pair.attributes['top_description'] %> & <%= pair.attributes['bot_description'] %></b></p>
+      <p><%= link_to 'Show', pair %> | <%= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </td>
+    <td></td>
+    <td></td>
+  </tr>
   <tr>
-    <td><%= pair.image_top %></td>
-    <td><%= pair.image_bottom %></td>
-    <td><%= link_to 'Show', pair %></td>
-    <td><%= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%#= pair.image_top %></td>
+    <td><%#= pair.image_bottom %></td>
+    <td><%#= link_to 'Show', pair %></td>
+    <td><%#= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

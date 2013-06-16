@@ -2,10 +2,25 @@ class PairsController < ApplicationController
   # GET /pairs
   # GET /pairs.json
   def index
-    @pairs = Pair.all
-    @drawings = Drawing.all
+    #@pairs = Pair.all
+    
+    #@drawing_top = Drawing.joins(:pair).where(:id == :image_top)
+    #@drawing_bottom = Drawing.includes(:pair).where(:image_bottom, :id)
 
+    @pairs = Pair.find_by_sql("SELECT pairs.id, top.id as top_id, top.image as top_image, toptypes.type_description as top_description, bot.id as bot_id, bot.image as bot_image, bottypes.type_description as bot_description FROM pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id")
+    
+    #@test = Pair.find_by_sql("SELECT top.id, toptypes.type_description, bot.id, bottypes.type_description FROM pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id")
+    
+
+    #@test = Pair.find_by_sql("SELECT pairs.image_top FROM pairs")
+    #@test = Pair.find_by_sql("SELECT pairs.image_top AS top FROM pairs")
+    
     puts "+++++++++++ pairs index +++++++++++++"
+    puts @pairs.first.attributes['top_id']
+    puts @pairs.first.attributes['top_description']
+    puts @pairs.first.attributes['bot_id']
+    puts @pairs.first.attributes['bot_description']
+    puts "$$$$$$$$$$$$$$$$$$$$$$$$"
     #@drawings = Drawing.includes(:drawing_type)
 
     #@drawings_top = Drawing.find(@pair.image_top)
@@ -24,9 +39,10 @@ class PairsController < ApplicationController
   # GET /pairs/1.json
   def show
     @pair = Pair.find(params[:id])
-    #puts "$$$$$$$$$$$$$$$$$$$"
-    #puts params
-    #puts "$$$$$$$$$$$$$$$$$$$"
+    puts "$$$$$$ in show!!  $$$$$$$$$$$$$"
+    puts params
+    puts @pair.inspect
+    puts "$$$$$$$$$$$$$$$$$$$"
     #@drawing = Drawing.find(params[:id])
 
     #@drawings = @pair.drawings
