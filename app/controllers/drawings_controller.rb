@@ -14,12 +14,8 @@ class DrawingsController < ApplicationController
     # this emits the correct query but only uses it for the drawings array, and still does N other queries!?!?
     #@drawings = Drawing.select("drawings.*, drawing_types.type_description").joins("INNER JOIN drawing_types ON drawing_types.id = drawings.drawing_type_id")
 
-    # no idea what these are...
-    #@drawing_type = Drawing.where(:joins => 'join drawing_types on drawings.type_id = drawing_types.id')
-    #@drawing_types = DrawingType.joins(:drawings)
-
     puts "$$$$$$$ in drawings index $$$$$$$"
-    puts @drawings.inspect
+    puts @drawings.first.drawing_type.inspect
     puts "*************"
 
     respond_to do |format|
