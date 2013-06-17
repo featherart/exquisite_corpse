@@ -4,7 +4,15 @@
       <%= link_to "Home", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Create Torso", new_pair_path %></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add to Existing Drawing <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Add Torso to Head", new_pair_path %></li>
+                <li><%= link_to "Add Head to Torso", "#" %></li>
+                <li><%= link_to "Add Legs to Torso", "#" %></li>
+                <li><%= link_to "Add Torso to Legs", "#" %></li>
+              </ul>
+          </li>
           <li><%= link_to "Create Drawing", new_drawing_path %></li>
           <li><%= link_to "Show Drawings", drawings_path %></li>
           <li><%= link_to "Show Pairs", pairs_path %></li>
@@ -24,7 +32,7 @@
               </ul>
             </li>
           <% #else %>
-            <!--<li><%= link_to "Sign in", "#" %></li>-->
+            <!--<li><%#= link_to "Sign in", "#" %></li>-->
           <% #end %>
         </ul>
       </nav>
