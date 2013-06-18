@@ -4,12 +4,12 @@
     <%= hidden_field_tag :drawing_type_id, 2 %>
     <%= hidden_field_tag :image %>
     <div class="field">
-      <%#= collection_select(@drawing, :type_id, DrawingType.all, :id, :type_description) %>
-      
+      <%#= collection_select(@drawing, :type_id, DrawingType.all, :id, :type_description) %>      
     </div>
     <div class="actions">
       <%= f.submit %>
-      <button id="clear">Clear</button>
+      <button type="button" id="clear">Clear</button>
+      <!-- if button isn't type="button" it submits -->
     </div>
     
 
