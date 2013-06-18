@@ -1,6 +1,8 @@
 <div class="hero-unit">
+<p>
   <h1>New Drawing Pair</h1>
-  <p>
+</p>
+<p>
   <!-- display a random head -->
   <%# drawings = Drawing.all
      heads = Hash.new
@@ -19,10 +21,17 @@
      end %>
 
   <!--<img src="<%#= heads[random_head_id]  %>"></src>-->
-  <img src="<%= @randomly_selected_head.image %>"></src>
-	    
-  </p>
-  <p> 
+  <%#= link_to image_tag("transparent.png", alt: "Sandwich"), '#' %>
+  <!--<div style="width: 500px; height: 20px; overflow: hidden">
+  <img class="crop" src="<%#= @randomly_selected_head.image %>" width="500" height="20"></src>
+</div>-->
+<p class="crop">
+<img src="<%= @randomly_selected_head.image %>"></src>
+  
+</p>
+<p>
+</p>
+<p>    
   <%= render 'form' %>
   </p>    
 </div>

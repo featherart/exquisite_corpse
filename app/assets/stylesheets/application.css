@@ -72,3 +72,15 @@ textarea {
     margin: 0 0 18px 0;
   }
 }
+
+.crop{
+  float:left;
+  margin:.5em 10px .5em 0;
+  overflow:hidden; 
+  border:0px solid #ccc;
+  }
+  /* input values to crop the image: top, right, bottom, left */
+.crop img{
+  margin:-180px 0px 0px 0px;
+  }
+
