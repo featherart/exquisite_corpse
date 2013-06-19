@@ -66,8 +66,30 @@ class PairsController < ApplicationController
     @pair = Pair.new
     @drawing = Drawing.new
 
+    if params[:pair_type].to_i == 1    # torso to head
+      @randomly_selected_drawing = Drawing.where(drawing_type_id: 1).sample
+      #puts "$$$$$$$$$$$$$$$"
+      #puts "in case pair_type = 1"
+    elsif params[:pair_type].to_i == 2 # head to torso
+      @randomly_selected_drawing = Drawing.where(drawing_type_id: 2).sample
+      #puts "$$$$$$$$$$$$$$$"
+      #puts "in case pair_type = 2"
+    elsif params[:pair_type].to_i == 3  # legs to torso
+      @randomly_selected_drawing = Drawing.where(drawing_type_id: 2).sample
+      #puts "$$$$$$$$$$$$$$$"
+      #puts "in case pair_type = 3"
+    elsif params[:pair_type].to_i == 4  # torso to legs
+      @randomly_selected_drawing = Drawing.where(drawing_type_id: 3).sample
+      #puts "$$$$$$$$$$$$$$$"
+      #puts "in case pair_type = 4"
+    else
+      @randomly_selected_drawing = Drawing.where(drawing_type_id: 1).sample
+      #puts "$$$$$$$$$$$$$$$"
+      #puts "in else"
+      puts params[:pair_type].to_i
+    end
     #@randomly_selected_drawing = Drawing.all.sample # gets a random drawing of any type
-    @randomly_selected_head = Drawing.where(drawing_type_id: 1).sample
+    #@randomly_selected_head = Drawing.where(drawing_type_id: 1).sample
 
     respond_to do |format|
       format.html # new.html.erb
@@ -84,9 +106,7 @@ class PairsController < ApplicationController
   # POST /pairs.json
   def create
     @pair = Pair.new(params[:id])
-    @pair.image_top = params[:pairs_top_id]
-    #@pair.image_bottom = xxx
-    
+    #@pair.image_top = params[:pairs_top_id]
     @drawing = Drawing.new()
     @drawing.image = params[:image]
     @drawing.drawing_type_id = params[:drawing_type_id]
@@ -95,7 +115,52 @@ class PairsController < ApplicationController
     #puts "****************"
     @drawing.save!
 
-    @pair.image_bottom = @drawing.id
+    puts "$$$$$$$$in pairs create$$$$$$$$$"
+    puts params[:pair_type]
+    puts "$$$$$$$$$$$$$end of pairs_type params$$$$$$$$$$$$$"
+
+    if params[:pair_type].to_i == 1    # torso to head
+      @pair.image_top = params[:pairs_top_id]
+      @pair.image_bottom = @drawing.id
+      
+      #puts "$$$$$$$$$$$$$$$"
+      puts "in case pair_type = 1"
+    elsif params[:pair_type].to_i == 2 # head to torso
+      @pair.image_top = @drawing.id
+      @pair.image_bottom = params[:pairs_top_id]
+      
+      #puts "$$$$$$$$$$$$$$$"
+      puts "in case pair_type = 2"
+    elsif params[:pair_type].to_i == 3  # legs to torso
+      @pair.image_top = params[:pairs_top_id]
+      @pair.image_bottom = @drawing.id
+
+      #puts "$$$$$$$$$$$$$$$"
+      puts "in case pair_type = 3"
+    elsif params[:pair_type].to_i == 4  # torso to legs
+      @pair.image_top = @drawing.id
+      @pair.image_bottom = params[:pairs_top_id]
+
+      #puts "$$$$$$$$$$$$$$$"
+      puts "in case pair_type = 4"
+    else
+      @pair.image_top = params[:pairs_top_id]
+      @pair.image_bottom = @drawing.id
+
+      #puts "$$$$$$$$$$$$$$$"
+      puts "in else"
+      puts params[:pair_type].to_i
+    end
+    
+    #@drawing = Drawing.new()
+    #@drawing.image = params[:image]
+    #@drawing.drawing_type_id = params[:drawing_type_id]
+    #puts "*********drawing type_id in create!!!*******"
+    #puts @drawing.drawing_type_id
+    #puts "****************"
+    #@drawing.save!
+
+    #@pair.image_bottom = @drawing.id
 
     #puts '+++++++++++++++++'
     #p @drawing

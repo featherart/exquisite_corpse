@@ -7,10 +7,10 @@
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add to Existing Drawing <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Add Torso to Head", new_pair_path %></li>
-                <li><%= link_to "Add Head to Torso", "#" %></li>
-                <li><%= link_to "Add Legs to Torso", "#" %></li>
-                <li><%= link_to "Add Torso to Legs", "#" %></li>
+                <li><%= link_to "Add Torso to Head", new_pair_path(:pair_type => 1) %></li>
+                <li><%= link_to "Add Head to Torso", new_pair_path(:pair_type => 2) %></li>
+                <li><%= link_to "Add Legs to Torso", new_pair_path(:pair_type => 3)  %></li>
+                <li><%= link_to "Add Torso to Legs", new_pair_path(:pair_type => 4)  %></li>
               </ul>
           </li>
           <li><%= link_to "Create Drawing", new_drawing_path %></li>

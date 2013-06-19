@@ -73,14 +73,36 @@ textarea {
   }
 }
 
-.crop{
+.crop-top {
   float:left;
   margin:.5em 10px .5em 0;
   overflow:hidden; 
   border:0px solid #ccc;
   }
   /* input values to crop the image: top, right, bottom, left */
-.crop img{
+.crop-top img {
   margin:-180px 0px 0px 0px;
   }
 
+.crop-bottom {
+  float:left;
+  margin:.5em 10px .5em 0;
+  overflow:hidden; 
+  border:0px solid #ccc;
+  }
+  /* input values to crop the image: top, right, bottom, left */
+.crop-bottom img {
+  margin:0px 0px -180px 0px;
+  }
+
+.pair-top-buttons {
+  position:absolute;
+  left:650px;
+  top:230px;
+}
+
+.pair-bottom-buttons {
+  position:absolute;
+  left:650px;
+  top:430px;
+}

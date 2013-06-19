@@ -2,8 +2,7 @@
 <p>
   <h1>New Drawing Pair</h1>
 </p>
-<p>
-  <!-- display a random head -->
+  <!--display a random head using a Hash, but it's the wrong way!-->
   <%# drawings = Drawing.all
      heads = Hash.new
      random_head_id = 0
@@ -21,15 +20,32 @@
      end %>
 
   <!--<img src="<%#= heads[random_head_id]  %>"></src>-->
-  <%#= link_to image_tag("transparent.png", alt: "Sandwich"), '#' %>
+  <%#= link_to image_tag("transparent.png", alt: ""), '#' %>
   <!--<div style="width: 500px; height: 20px; overflow: hidden">
   <img class="crop" src="<%#= @randomly_selected_head.image %>" width="500" height="20"></src>
 </div>-->
-<p class="crop">
-<img src="<%= @randomly_selected_head.image %>"></src> 
-</p>
-<p>    
+
+<% 
+    if params[:pair_type].to_i == 1  || params[:pair_type].to_i == 3 
+%>
+    <div class="crop-top">
+      <img src="<%= @randomly_selected_drawing.image %>"></src> 
+<%  
+    end
+%>
+
   <%= render 'form' %>
-  </p>    
+  
+<% 
+    if params[:pair_type].to_i == 2  || params[:pair_type].to_i == 4 
+%>
+    <div class="crop-bottom">
+      <img src="<%= @randomly_selected_drawing.image %>"></src> 
+<%  
+    end
+%>
+  </div>
 </div>
+
 <%= link_to 'Back', pairs_path %>
+
