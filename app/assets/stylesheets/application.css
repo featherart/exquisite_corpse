@@ -15,22 +15,34 @@
 
 /* default canvas, has grey bar on bottom */
  canvas {
-  border: 1px solid black;
+  border: 1px solid;
   cursor: crosshair;
   display: block;
 }
 
 .canvas-bottom {
-  background:url("grey_bottom.png")
+  background:url("gray_bottom.png");
+  border-top-color:gray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:lightgray; 
 }
 /* other canvas, has grey bar on top */
- .canvas-top {
-  background:url("grey_top.png")
+.canvas-top {
+  background:url("gray_top.png");
+  border-top-color:lightgray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:gray; 
 }
 
 /* center canvas, has grey bars on both top & bottom */
- .canvas-both {
-  background:url("grey_both.png")
+.canvas-both {
+  background:url("gray_both.png");
+  border-top-color:lightgray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:lightgray; 
 }
 
 /* forms */
@@ -118,26 +130,42 @@ textarea {
 
 .crop-top {
   float:left;
-  margin:.5em 10px .5em 0;
+  margin:.5em 0px .5em 0;
   padding: 0px;
   overflow:hidden; 
-  border:0px solid #ccc;
+  border:1px solid #dcdcdc;
+  background-color: #dcdcdc;
+  vertical-align: bottom;
   }
   /* input values to crop the image: top, right, bottom, left */
 .crop-top img {
-  margin:-166px 0px 0px 0px;
+  margin:-180px 0px 0px 0px;
+  vertical-align: bottom;
+  border:1px solid;
+  border-bottom-color: #dcdcdc;
+  border-left-color: gray;
+  border-right-color: gray;
+  border-top-color: gray;
   }
 
 .crop-bottom {
   float:left;
-  margin:.5em 10px .5em 0;
+  margin:.5em 0px .5em 0;
   padding-bottom: 0px;
   overflow:hidden; 
-  border:0px solid #ccc;
+  border:1px solid #dcdcdc;
+  background-color: #dcdcdc;
+  vertical-align: top;
   }
   /* input values to crop the image: top, right, bottom, left */
 .crop-bottom img {
-  margin:0px 0px -166px 0px;
+  margin:0px 0px -180px 0px;
+  vertical-align: top;
+  border:1px solid;
+  border-bottom-color: gray;
+  border-left-color: gray;
+  border-right-color: gray;
+  border-top-color: #dcdcdc;
   }
 
 .pair-top-buttons {
