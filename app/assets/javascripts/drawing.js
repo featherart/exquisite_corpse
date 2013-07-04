@@ -53,8 +53,21 @@ $(function() {
   });
 
   function clearCanvas() {
-    context.fillStyle = "#fff";
-    context.fillRect(0,0,$canvas.width(),$canvas.height());
+    //var can = document.getElementById("#drawing");
+    //console.log(can); // always null
+    //var ctx = can[0].getContext("2d");
+    // context.fillStyle = "clear";
+    //context.rect(0,0,$canvas.width(),$canvas.height());
+    //context.fill();
+    //context.fillStyle = "#fff";
+    //context.fillStyle = "clear";
+    //context.fillRect(0,0,$canvas.width(),$canvas.height());
+    //context.fill();
+    //context.fillStyle = "rgba(255,255,255,0.0)";
+    //context.fill();
+    //console.log(context.fillStyle);
+    //console.log('blad');
+    context.clearRect(0,0,$canvas.width(),$canvas.height());   
   }
 
   $clear.click(clearCanvas);

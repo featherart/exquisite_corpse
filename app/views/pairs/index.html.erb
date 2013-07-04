@@ -4,7 +4,7 @@
 <table>
 <% @pairs.each do |pair| %>
  <tr>
-    <td><img src=" <%= pair.attributes['top_image'] %> " width="120px" height="auto"></src><br>
+    <td class="drawing-display"><img src=" <%= pair.attributes['top_image'] %> " width="120px" height="auto"></src><br>
         <img src=" <%= pair.attributes['bot_image'] %> " width="120px" height="auto"></src>
     </td>
     <td><p><b><%= pair.attributes['top_description'] %> & <%= pair.attributes['bot_description'] %></b></p>

@@ -1,14 +1,14 @@
 <div class="hero-unit">
 
-<p>
-	<b>Your Drawing:</b>
-</p>
-<p>
-	<img src="<%= @drawing.image %>" />
-</p>
-<p>
-	<b>Drawing Type:</b>
-    <td><b><%= @drawing_type.type_description %></b></td>
-</p>
+	<div>
+		<b>Your Drawing:</b>
+	</div>
+	<div class="drawing-display">
+		<img src="<%= @drawing.image %>"/>
+	</div>
+	<div>
+		<b>Drawing Type:</b>
+	    <td><b><%= @drawing_type.type_description %></b></td>
+	</div>
 </div>
 <%= link_to 'Back', drawings_path %>

@@ -50,4 +50,168 @@ inner join drawings as bot on bot.id = pairs.image_bottom
 inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id 
 inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id;
 
-
+diff --git a/app/assets/javascripts/drawing.js b/app/assets/javascripts/drawing.js
+index e52cf96..37f931a 100644
+--- a/app/assets/javascripts/drawing.js
++++ b/app/assets/javascripts/drawing.js
+@@ -53,7 +53,8 @@ $(function() {
+   });
+ 
+   function clearCanvas() {
+-    context.fillStyle = "#fff";
++    //context.fillStyle = "#fff";
++    context.fillStyle = "clear";
+     context.fillRect(0,0,$canvas.width(),$canvas.height());
+   }
+ 
+diff --git a/app/assets/stylesheets/application.css b/app/assets/stylesheets/application.css
+index b4e2b19..6362b40 100644
+--- a/app/assets/stylesheets/application.css
++++ b/app/assets/stylesheets/application.css
+@@ -88,21 +88,30 @@ textarea {
+   float:left;
+   margin:.5em 10px .5em 0;
+   overflow:hidden; 
+-  border:0px solid #ccc;
++  border:1px solid #ccc;
+   }
+   /* input values to crop the image: top, right, bottom, left */
+ .crop-bottom img {
+-  margin:0px 0px -180px 0px;
++  margin:-180px 0px 0px 0px;
+   }
+ 
++/* move buttons around for top/bottom drawing */
+ .pair-top-buttons {
+   position:absolute;
+-  left:650px;
+-  top:230px;
++  left:615px;
++  top:300px;
+ }
+ 
+ .pair-bottom-buttons {
+   position:absolute;
+-  left:650px;
+-  top:430px;
++  left:600px;
++  top:325px;
++}
++
++/* make the transparent png align with canvas */
++
++.drawing-area {
++  position:absolute;
++  left:90px;
++  top:225px;
+ }
+diff --git a/app/controllers/pairs_controller.rb b/app/controllers/pairs_controller.rb
+index b3bab6e..0e60f23 100644
+--- a/app/controllers/pairs_controller.rb
++++ b/app/controllers/pairs_controller.rb
+@@ -82,6 +82,7 @@ class PairsController < ApplicationController
+       @randomly_selected_drawing = Drawing.where(drawing_type_id: 3).sample
+       #puts "$$$$$$$$$$$$$$$"
+       #puts "in case pair_type = 4"
++      puts @randomly_selected_drawing.inspect
+     else
+       @randomly_selected_drawing = Drawing.where(drawing_type_id: 1).sample
+       #puts "$$$$$$$$$$$$$$$"
+diff --git a/app/views/pairs/_form.html.erb b/app/views/pairs/_form.html.erb
+index 7048900..ea306f4 100644
+--- a/app/views/pairs/_form.html.erb
++++ b/app/views/pairs/_form.html.erb
+@@ -1,22 +1,42 @@
+-  <canvas id="drawing" width="500" height="200"></canvas>
+-  <%= form_for(@pair) do |f| %>
+-
+-  <% drawing_type = 0
++<% drawing_type = 0
+      class_type = "pair-top-buttons"
++     drawing_id = 0
++     transparent_png = "grey_bottom.png"
+ 
+-    if params[:pair_type].to_i == 1
++    if params[:pair_type].to_i == 1 # torso to head
+       drawing_type = 2
+       class_type = "pair-bottom-buttons"
+-    elsif params[:pair_type].to_i == 3
++      transparent_png = "grey_top.png"
++      
++    elsif params[:pair_type].to_i == 3 # legs to torso
+       drawing_type = 3
+-      class_type = "pair-bottom-buttons"
+-    elsif params[:pair_type].to_i == 2 
++      class_type = "pair-top-buttons"
++      transparent_png = "grey_bottom.png"
++    elsif params[:pair_type].to_i == 2 # head to torso
+       drawing_type = 1
+-    elsif params[:pair_type].to_i == 4
+-      drawing_type = 2    
++      transparent_png = "grey_top.png"
++    elsif params[:pair_type].to_i == 4 # torso to legs
++      drawing_type = 2  
++      transparent_png = "grey_top.png"  
++    end
++
++    # handle case where type of drawing doesn't exsist yet, but not a long-term solution
++    if @randomly_selected_drawing != nil 
++      drawing_id = @randomly_selected_drawing.id
++    else 
++      drawing_id = 1
+     end
+   %>
+-    <%= hidden_field_tag :pairs_top_id, @randomly_selected_drawing.id %>
++<div style="position:absolute;left:90px;top:325px;">
++  <canvas id="drawing" width="500" height="200"></canvas>
++</div>
++<div style="position:absolute;left:90px;top:325px;z-index:-1;">
++  <%= image_tag( transparent_png, alt: "") %>
++  <!--<img src="http://localhost:3000/assets/grey_bottom.png"></src>-->
++</div>
++  <%= form_for(@pair) do |f| %>
++
++    <%= hidden_field_tag :pairs_top_id, drawing_id %>
+     <%= hidden_field_tag :pair_type, params[:pair_type].to_i %>
+     <%= hidden_field_tag :drawing_type_id, drawing_type %>
+     <%= hidden_field_tag :image %>
+diff --git a/app/views/pairs/new.html.erb b/app/views/pairs/new.html.erb
+index 83facd9..85e78e6 100644
+--- a/app/views/pairs/new.html.erb
++++ b/app/views/pairs/new.html.erb
+@@ -26,20 +26,20 @@
+ </div>-->
+ 
+ <% 
+-    if params[:pair_type].to_i == 1  || params[:pair_type].to_i == 3 
++    if params[:pair_type].to_i == 2  || params[:pair_type].to_i == 4 
+ %>
+-    <div class="crop-top">
++    <div class="crop-top" style="position:absolute;left:90px;top:225px;border=1px">
+       <img src="<%= @randomly_selected_drawing.image %>"></src> 
+ <%  
+     end
+ %>
+-
+   <%= render 'form' %>
+   
+ <% 
+-    if params[:pair_type].to_i == 2  || params[:pair_type].to_i == 4 
++    if params[:pair_type].to_i == 1  || params[:pair_type].to_i == 3 
+ %>
+-    <div class="crop-bottom">
++    <div class="crop-bottom" style="position:absolute;left:90px;top:285px;border=1px">
++    <div>
+       <img src="<%= @randomly_selected_drawing.image %>"></src> 
+ <%  
+     end
+@@ -47,5 +47,7 @@
+   </div>
+ </div>
+ 
+-<%= link_to 'Back', pairs_path %>
++<%#= link_to 'Back', pairs_path %>
++ 
++
+ 
+end of discarded changes

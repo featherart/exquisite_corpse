@@ -1,21 +1,28 @@
-  <canvas id="drawing" width="500" height="200"></canvas>
-  <%= form_for(@pair) do |f| %>
-
-  <% drawing_type = 0
+<% drawing_type = 0
      class_type = "pair-top-buttons"
+     canvas_type = "canvas-bottom"
 
     if params[:pair_type].to_i == 1
       drawing_type = 2
       class_type = "pair-bottom-buttons"
+      canvas_type = "canvas-top"
     elsif params[:pair_type].to_i == 3
       drawing_type = 3
       class_type = "pair-bottom-buttons"
+      canvas_type = "canvas-top"
     elsif params[:pair_type].to_i == 2 
       drawing_type = 1
+      canvas_type = "canvas-bottom"
     elsif params[:pair_type].to_i == 4
-      drawing_type = 2    
+      drawing_type = 2 
+      canvas_type = "canvas-bottom"   
     end
   %>
+
+  <canvas id="drawing" class="<%= canvas_type %>" width="500" height="200"></canvas>
+  <%= form_for @pair, html: {class: "pair-form"} do |f| %>
+  
+  
     <%= hidden_field_tag :pairs_top_id, @randomly_selected_drawing.id %>
     <%= hidden_field_tag :pair_type, params[:pair_type].to_i %>
     <%= hidden_field_tag :drawing_type_id, drawing_type %>

@@ -13,7 +13,7 @@
 <% @drawings.each do |drawing| 
     %>
   <tr>
-    <td><img src="<%= drawing.image %>" width="150px" height="auto"></img></td>
+    <td class="drawing-display"><img src="<%= drawing.image %>" width="150px" height="auto"></img></td>
     <td><b><%= drawing.drawing_type.type_description %></b></td>
     
     <!-- <td><b><%#= drawing.type_description %></b></td> -->  <!-- this one is for the joins.select single query -->

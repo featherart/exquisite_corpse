@@ -2,29 +2,4 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-canvas {
-	border: 1px solid black;
-	cursor: crosshair;
-	display: block;
-}
-
-/* forms */
-
-input {
-  height: auto !important;
-}
-
-/* Prevent text selection */
-
-.noselect {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-}
-
-
 

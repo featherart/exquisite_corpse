@@ -29,23 +29,24 @@
     if params[:pair_type].to_i == 1  || params[:pair_type].to_i == 3 
 %>
     <div class="crop-top">
-      <img src="<%= @randomly_selected_drawing.image %>"></src> 
+      <img src="<%= @randomly_selected_drawing.image %>">
+      <%= render 'form' %>
 <%  
     end
 %>
-
-  <%= render 'form' %>
   
 <% 
     if params[:pair_type].to_i == 2  || params[:pair_type].to_i == 4 
 %>
+
     <div class="crop-bottom">
-      <img src="<%= @randomly_selected_drawing.image %>"></src> 
+      <%= render 'form' %>
+      <img src="<%= @randomly_selected_drawing.image %>"> 
 <%  
     end
 %>
-  </div>
+  
 </div>
 
-<%= link_to 'Back', pairs_path %>
+<%#= link_to 'Back', pairs_path %>
 

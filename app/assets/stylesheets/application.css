@@ -13,6 +13,45 @@
  *= require_tree .
  */
 
+/* default canvas, has grey bar on bottom */
+ canvas {
+  border: 1px solid black;
+  cursor: crosshair;
+  display: block;
+}
+
+.canvas-bottom {
+  background:url("grey_bottom.png")
+}
+/* other canvas, has grey bar on top */
+ .canvas-top {
+  background:url("grey_top.png")
+}
+
+/* center canvas, has grey bars on both top & bottom */
+ .canvas-both {
+  background:url("grey_both.png")
+}
+
+/* forms */
+
+input {
+  height: auto !important;
+}
+
+/* Prevent text selection */
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
  h2 {
   font-size: 2.7em;
   letter-spacing: -1px;
@@ -73,36 +112,47 @@ textarea {
   }
 }
 
+.pair-form {
+  margin-bottom: 0px;
+}
+
 .crop-top {
   float:left;
   margin:.5em 10px .5em 0;
+  padding: 0px;
   overflow:hidden; 
   border:0px solid #ccc;
   }
   /* input values to crop the image: top, right, bottom, left */
 .crop-top img {
-  margin:-180px 0px 0px 0px;
+  margin:-166px 0px 0px 0px;
   }
 
 .crop-bottom {
   float:left;
   margin:.5em 10px .5em 0;
+  padding-bottom: 0px;
   overflow:hidden; 
   border:0px solid #ccc;
   }
   /* input values to crop the image: top, right, bottom, left */
 .crop-bottom img {
-  margin:0px 0px -180px 0px;
+  margin:0px 0px -166px 0px;
   }
 
 .pair-top-buttons {
   position:absolute;
-  left:650px;
-  top:230px;
+  left:665px;
+  top:240px;
 }
 
 .pair-bottom-buttons {
   position:absolute;
-  left:650px;
-  top:430px;
+  left:665px;
+  top:410px;
+}
+
+/* make background display white for drawings */
+.drawing-display {
+  background-color:white;
 }
