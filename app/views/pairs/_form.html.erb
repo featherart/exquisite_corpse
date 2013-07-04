@@ -1,24 +1,29 @@
 <% drawing_type = 0
      class_type = "pair-top-buttons"
      canvas_type = "canvas-bottom"
+     pair_message = ""
 
     if params[:pair_type].to_i == 1
       drawing_type = 2
       class_type = "pair-bottom-buttons"
       canvas_type = "canvas-top"
+      pair_message = "Add torso to head"
     elsif params[:pair_type].to_i == 3
       drawing_type = 3
       class_type = "pair-bottom-buttons"
       canvas_type = "canvas-top"
+      pair_message = "Add legs to torso"
     elsif params[:pair_type].to_i == 2 
       drawing_type = 1
       canvas_type = "canvas-bottom"
+      pair_message = "Add head to torso"
     elsif params[:pair_type].to_i == 4
       drawing_type = 2 
-      canvas_type = "canvas-bottom"   
+      canvas_type = "canvas-bottom"  
+      pair_message = "Add torso to legs" 
     end
   %>
-
+ 
   <canvas id="drawing" class="<%= canvas_type %>" width="500" height="200"></canvas>
   <%= form_for @pair, html: {class: "pair-form"} do |f| %>
   
@@ -28,7 +33,7 @@
     <%= hidden_field_tag :drawing_type_id, drawing_type %>
     <%= hidden_field_tag :image %>
     
-         
+    <%#= text_field "", "", :value => pair_message %>    
     <div class="<%=class_type %>">
       <p>
         <%= f.submit %>
@@ -36,6 +41,9 @@
       <p>
         <button type="button" id="clear">Clear</button>
         <!-- if button isn't type="button" it submits -->
+      </p>
+      <p>
+         <i><%= pair_message %></i>
       </p>
     </div>
     
@@ -52,7 +60,7 @@
     </div>
   
     <% end %>
-
+    
     <script>
       $($('#new_pair')[0]).submit(function() {
         var canvasValue = $('canvas')[0].toDataURL('image/png');

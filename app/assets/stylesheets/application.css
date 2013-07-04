@@ -168,6 +168,22 @@ textarea {
   border-top-color: #dcdcdc;
   }
 
+.border-bottom {
+  border: 1px solid;
+  border-bottom-color: gray;
+  border-left-color: gray;
+  border-right-color: gray;
+  border-top-color: #dcdcdc;
+}
+
+.border-top {
+  border: 1px solid;
+  border-bottom-color: #dcdcdc;
+  border-left-color: gray;
+  border-right-color: gray;
+  border-top-color: gray;
+}
+
 .pair-top-buttons {
   position:absolute;
   left:665px;
