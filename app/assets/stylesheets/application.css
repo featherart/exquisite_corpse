@@ -13,37 +13,6 @@
  *= require_tree .
  */
 
-/* default canvas, has grey bar on bottom */
- canvas {
-  border: 1px solid;
-  cursor: crosshair;
-  display: block;
-}
-
-.canvas-bottom {
-  background:url("gray_bottom.png");
-  border-top-color:gray;
-  border-left-color:gray;
-  border-right-color:gray;
-  border-bottom-color:lightgray; 
-}
-/* other canvas, has grey bar on top */
-.canvas-top {
-  background:url("gray_top.png");
-  border-top-color:lightgray;
-  border-left-color:gray;
-  border-right-color:gray;
-  border-bottom-color:gray; 
-}
-
-/* center canvas, has grey bars on both top & bottom */
-.canvas-both {
-  background:url("gray_both.png");
-  border-top-color:lightgray;
-  border-left-color:gray;
-  border-right-color:gray;
-  border-bottom-color:lightgray; 
-}
 
 /* forms */
 
@@ -130,10 +99,11 @@ textarea {
 
 .crop-top {
   float:left;
-  margin:.5em 0px .5em 0;
-  padding: 0px;
+  margin:0px 0px 0px 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   overflow:hidden; 
-  border:1px solid #dcdcdc;
+  /*border:1px solid #dcdcdc;*/
   background-color: #dcdcdc;
   vertical-align: bottom;
   }
@@ -141,19 +111,16 @@ textarea {
 .crop-top img {
   margin:-180px 0px 0px 0px;
   vertical-align: bottom;
-  border:1px solid;
-  border-bottom-color: #dcdcdc;
-  border-left-color: gray;
-  border-right-color: gray;
-  border-top-color: gray;
   }
 
 .crop-bottom {
   float:left;
-  margin:.5em 0px .5em 0;
+  /*margin:.5em 0px .5em 0px;*/
+  margin:0px 0px 0px 0px;
+  padding-top: 0px;
   padding-bottom: 0px;
   overflow:hidden; 
-  border:1px solid #dcdcdc;
+  /*border:1px solid #dcdcdc;*/
   background-color: #dcdcdc;
   vertical-align: top;
   }
@@ -161,39 +128,91 @@ textarea {
 .crop-bottom img {
   margin:0px 0px -180px 0px;
   vertical-align: top;
-  border:1px solid;
-  border-bottom-color: gray;
-  border-left-color: gray;
-  border-right-color: gray;
-  border-top-color: #dcdcdc;
   }
-
+/* div where image goes */
 .border-bottom {
-  border: 1px solid;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-top: 0px;
   border-bottom-color: gray;
   border-left-color: gray;
   border-right-color: gray;
   border-top-color: #dcdcdc;
 }
-
+/* div where image goes */
 .border-top {
-  border: 1px solid;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 0px solid;
   border-bottom-color: #dcdcdc;
   border-left-color: gray;
   border-right-color: gray;
   border-top-color: gray;
 }
 
+/* default canvas, has grey bar on bottom */
+ canvas {
+  /*border: 1px solid;*/
+  cursor: crosshair;
+  display: block;
+}
+
+.canvas-bottom {
+  background:url("gray_bottom.png");
+  border-top:1px solid;
+  border-left:1px solid;
+  border-right:1px solid;
+  border-top-color:gray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:lightgray; 
+}
+/* other canvas, has grey bar on top */
+.canvas-top {
+  background:url("gray_top.png");
+  border-bottom:1px solid;
+  border-left:1px solid;
+  border-right:1px solid;
+  border-top-color:lightgray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:gray; 
+}
+
+/* center canvas, has grey bars on both top & bottom */
+.canvas-both {
+  background:url("gray_both.png");
+  border:1px solid;
+  border-top-color:lightgray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:lightgray; 
+}
+
+/* default new drawing canvas, for now */
+.canvas-new {
+  background:url("gray_both.png");
+  border:1px solid;
+  border-top-color:gray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:gray; 
+}
+
+/* move buttons top */
 .pair-top-buttons {
   position:absolute;
   left:665px;
   top:240px;
 }
 
+/* move buttons bottom */
 .pair-bottom-buttons {
   position:absolute;
   left:665px;
-  top:410px;
+  top:350px;
 }
 
 /* make background display white for drawings */
