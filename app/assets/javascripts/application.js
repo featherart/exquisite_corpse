@@ -16,3 +16,20 @@
 //= require bootstrap
 //= require_tree .
 
+function drawingTypeChanged() {
+	var opt = drawing_drawing_type_id.selectedIndex;
+	var can = document.getElementById('drawing');
+	if( opt == 0 ) {
+		can.className="canvas-new-head";
+	}
+	else if( opt == 1 ) {
+		can.className="canvas-new-torso";
+	}
+	else if( opt == 2 ) {
+		can.className="canvas-new-legs";
+	}
+	else {
+		can.className="canvas-new-head";
+	}
+	//alert(opt);
+}

@@ -201,6 +201,33 @@ textarea {
   border-bottom-color:gray; 
 }
 
+.canvas-new-head {
+  background:url("gray_bottom.png");
+  border:1px solid;
+  border-top-color:gray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:gray; 
+}
+
+.canvas-new-torso {
+  background:url("gray_both.png");
+  border:1px solid;
+  border-top-color:gray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:gray; 
+}
+
+.canvas-new-legs {
+  background:url("gray_top.png");
+  border:1px solid;
+  border-top-color:gray;
+  border-left-color:gray;
+  border-right-color:gray;
+  border-bottom-color:gray; 
+}
+
 /* move buttons top */
 .pair-top-buttons {
   position:absolute;

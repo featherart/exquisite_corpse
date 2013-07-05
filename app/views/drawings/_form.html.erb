@@ -1,9 +1,13 @@
-  <canvas id="drawing" class="canvas-new" width="500" height="200"></canvas>
+  <canvas id="drawing" class="canvas-new-head" width="500" height="200"></canvas>
   <%= form_for(@drawing) do |f| %>
   <%= f.hidden_field :image %>
   <div class="field">
     <%= f.label :drawing_type_id %>
-    <%= f.collection_select(:drawing_type_id, DrawingType.all, :id, :type_description) %>
+    <%#= f.collection_select(:drawing_type_id, DrawingType.all, :id, :type_description, {}, html_options = {:onchange => "alert('hello')"} ) %>
+    <%#= f.collection_select(:drawing_type_id, DrawingType.all, :id, :type_description, {}, html_options = {:onchange => "var can = document.getElementsByTagName('canvas')[0];var ctx = can.getContext('2D');alert(ctx);"} ) %>
+    <%#= f.collection_select(:drawing_type_id, DrawingType.all, :id, :type_description, {}, html_options = {:onchange => "var can = document.getElementById('drawing');var ctx = can.getContext('2d');"} ) %>
+    <%= f.collection_select(:drawing_type_id, DrawingType.all, :id, :type_description, {}, html_options = {:onchange => "drawingTypeChanged();"} ) %>
+    
   </div>
 
   <% if @drawing.errors.any? %>
