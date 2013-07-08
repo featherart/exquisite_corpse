@@ -3,5 +3,6 @@ class Drawing < ActiveRecord::Base
   #delegate :type_description, :to => :drawing_type
   belongs_to :drawing_type #, :select => 'drawings.*, drawing_types.type_description as type_description'
   belongs_to :pair
+  #belongs_to :corpse
   #accepts_nested_attributes_for :pairs
 end

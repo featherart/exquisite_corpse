@@ -1,9 +1,11 @@
 ExquisiteCorpse::Application.routes.draw do
   resources :pairs
+  resources :corpse
   
   resources :drawings do
     resources :drawing_types
     resources :pairs
+    resources :corpse
   end
   root to: "drawings#new"
 

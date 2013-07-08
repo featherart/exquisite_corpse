@@ -245,4 +245,5 @@ textarea {
 /* make background display white for drawings */
 .drawing-display {
   background-color:white;
+  padding: 30px;
 }

@@ -14,8 +14,11 @@
     %>
   <tr>
     <td class="drawing-display"><img src="<%= drawing.image %>" width="150px" height="auto"></img></td>
-    <td><b><%= drawing.drawing_type.type_description %></b></td>
-    
+    <% if drawing.drawing_type != nil  %>
+      <td><b><%= drawing.drawing_type.type_description  %></b></td>
+    <% else %>
+      <td><b>Undefined</b></td>
+    <% end %>
     <!-- <td><b><%#= drawing.type_description %></b></td> -->  <!-- this one is for the joins.select single query -->
 
     <td><%= drawing.user_id %></td>

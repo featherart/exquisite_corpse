@@ -14,8 +14,9 @@
               </ul>
           </li>
           <li><%= link_to "Create Drawing", new_drawing_path %></li>
-          <li><%= link_to "Show Drawings", drawings_path %></li>
-          <li><%= link_to "Show Pairs", pairs_path %></li>
+          <li><%= link_to "See Drawings", drawings_path %></li>
+          <li><%= link_to "See Pairs", pairs_path %></li>
+          <li><%= link_to "See Corpses", corpse_index_path %></li>
           <% #if signed_in? %>
             <li><%= link_to "Users", "#" %></li>
             <li id="fat-menu" class="dropdown">

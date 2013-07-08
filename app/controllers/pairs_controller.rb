@@ -7,7 +7,15 @@ class PairsController < ApplicationController
     #@drawing_top = Drawing.joins(:pair).where(:id == :image_top)
     #@drawing_bottom = Drawing.includes(:pair).where(:image_bottom, :id)
 
-    @pairs = Pair.find_by_sql("SELECT pairs.id, top.id as top_id, top.image as top_image, toptypes.type_description as top_description, bot.id as bot_id, bot.image as bot_image, bottypes.type_description as bot_description FROM pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id")
+    @pairs = Pair.find_by_sql(
+      "SELECT pairs.id, top.id as top_id, top.image as top_image,
+       toptypes.type_description as top_description, bot.id as bot_id, 
+       bot.image as bot_image, bottypes.type_description as bot_description 
+       FROM pairs 
+       inner join drawings as top on top.id = pairs.image_top 
+       inner join drawings as bot on bot.id = pairs.image_bottom 
+       inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id 
+       inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id")
     
     #@test = Pair.find_by_sql("SELECT top.id, toptypes.type_description, bot.id, bottypes.type_description FROM pairs inner join drawings as top on top.id = pairs.image_top inner join drawings as bot on bot.id = pairs.image_bottom inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id")
     

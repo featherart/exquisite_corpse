@@ -40,16 +40,23 @@ $(function() {
   });
 
   $form.submit(function(e) {
+    var opt = drawing_drawing_type_id.selectedIndex;
+    //alert("in submit");
+    if( opt == 0 ) {
+      alert("Please select a drawing type");
+      e.preventDefault();
+    }
+    else {
+      var url = $canvas[0].toDataURL('image/png'),
+          img = document.createElement('img'),
+          drawings_target = $('#drawings_target');
 
-    var url = $canvas[0].toDataURL('image/png'),
-        img = document.createElement('img'),
-        drawings_target = $('#drawings_target');
+      img.src = url;
+      
+      drawings_target.append(img);
 
-    img.src = url;
-    
-    drawings_target.append(img);
-
-    $hidden.val(url);
+      $hidden.val(url);
+    }
   });
 
   function clearCanvas() {

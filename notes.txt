@@ -215,3 +215,6 @@ index 83facd9..85e78e6 100644
 +
  
 end of discarded changes
+
+Query to make triples:
+select t.image_top, t.image_bottom,b.image_bottom from pairs t inner join pairs b where t.image_bottom = b.image_top;

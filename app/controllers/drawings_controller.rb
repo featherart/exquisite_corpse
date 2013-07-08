@@ -15,7 +15,7 @@ class DrawingsController < ApplicationController
     #@drawings = Drawing.select("drawings.*, drawing_types.type_description").joins("INNER JOIN drawing_types ON drawing_types.id = drawings.drawing_type_id")
 
     puts "$$$$$$$ in drawings index $$$$$$$"
-    puts @drawings.first.drawing_type.inspect
+    #puts @drawings.first.drawing_type.inspect
     puts "*************"
 
     respond_to do |format|
@@ -28,7 +28,10 @@ class DrawingsController < ApplicationController
   # GET /drawings/1.json
   def show
     @drawing = Drawing.find(params[:id])
-    @drawing_type = DrawingType.find(@drawing.drawing_type_id)
+    if( @drawing.drawing_type_id != nil )
+      @drawing_type = DrawingType.find(@drawing.drawing_type_id)
+    else @drawing_type = "undefined"
+    end
 
     respond_to do |format|
       format.html # show.html.erb
