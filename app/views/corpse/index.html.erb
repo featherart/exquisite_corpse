@@ -3,14 +3,16 @@
 
 <table>
 <% @corpses.each do |corpse| %>
+<% puts "********in the index page********" %>
+<% puts corpse.attributes['head'] %>
  <tr>
     <td class="drawing-display">
-    	<img src=" <%= corpse.attributes['t.image_top'] %> " width="120px" height="auto"></src><br>
-        <img src=" <%= corpse.attributes['t.image_bottom'] %> " width="120px" height="auto"></src><br>
-        <img src=" <%= corpse.attributes['b.image_bottom'] %> " width="120px" height="auto"></src>
+    	<img src=" <%= corpse.attributes['head.image'] %> " width="120px" height="auto"></src><br>
+        <img src=" <%= corpse.attributes['torso.image'] %> " width="120px" height="auto"></src><br>
+        <img src=" <%= corpse.attributes['legs'] %> " width="120px" height="auto"></src>
     </td>
     <td>
-      <p><%= link_to 'Show', corpse %> | <%#= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <p><%#= link_to 'Show', corpse %> | <%#= link_to 'Destroy', pair, method: :delete, data: { confirm: 'Are you sure?' } %></p>
     </td>
     
   </tr>

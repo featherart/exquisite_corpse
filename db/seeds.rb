@@ -5,4 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# this might be good to run first as it clears the id's to 0,1,2
+# DrawingType.delete_all
 drawing_types = DrawingType.create([{ type_description:'Head'}, { type_description:'Torso'}, { type_description:'Legs' } ])

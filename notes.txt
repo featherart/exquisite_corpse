@@ -218,3 +218,43 @@ end of discarded changes
 
 Query to make triples:
 select t.image_top, t.image_bottom,b.image_bottom from pairs t inner join pairs b where t.image_bottom = b.image_top;
+
+select t.image_top as head, t.image_bottom as torso, b.image_bottom as legs from pairs t inner join pairs b where t.image_bottom = b.image_top;
+
+select t.image_top.image as head, t.image_bottom.image as torso, b.image_bottom.image as legs from pairs t inner join pairs b where t.image_bottom = b.image_top
+inner join drawings as top on top.id = pairs.image_top 
+inner join drawings as bot on bot.id = pairs.image_bottom;
+
+select t.image_top as head_id, t.image_bottom as torso_id, b.image_bottom as legs_id, 
+from pairs t
+inner join pairs b where t.image_bottom = b.image_top
+inner join drawings as top on top.id = pairs.image_top 
+inner join drawings as bot on bot.id = pairs.image_bottom;
+
+select t.image_top as head_id, t.image_bottom as torso_id, b.image_bottom as legs_id, 
+from pairs t
+inner join pairs b where t.image_bottom = b.image_top
+inner join drawings as top on top.id = pairs.image_top 
+inner join drawings as bot on bot.id = pairs.image_bottom;
+
+SELECT pairs.id, top.id as top_id, top.image as top_image,
+       toptypes.type_description as top_description, bot.id as bot_id, 
+       bot.image as bot_image, bottypes.type_description as bot_description 
+       FROM pairs 
+       inner join drawings as top on top.id = pairs.image_top 
+       inner join drawings as bot on bot.id = pairs.image_bottom 
+       inner join drawing_types as toptypes on top.drawing_type_id = toptypes.id 
+       inner join drawing_types as bottypes on bot.drawing_type_id = bottypes.id
+
+SELECT Customers.AcctNumber,Customers.Custname ,catalogsales.InvoiceNo,ItemNo,Price,Quan ,(Price*Quan) 'EXT' FROM Customers ,catalogsales WHERE Customers.AcctNumber= catalogsales.AcctNumber ;
+
+SELECT t.image_top, t.image_bottom, b.image_bottom,
+t.image
+FROM pairs t, drawings 
+
+SELECT top.image as head, middle.image as torso, bottom.image as legs
+FROM pairs t, drawings
+INNER JOIN pairs b where t.image_bottom = b.image_top
+INNER JOIN drawings as top on top.id = pairs.image_top 
+INNER JOIN drawings as bot on bot.id = pairs.image_bottom
+
